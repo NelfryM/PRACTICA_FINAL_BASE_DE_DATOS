@@ -1,6 +1,6 @@
 ﻿namespace SISTEMA_VENTA
 {
-    partial class Form1
+    partial class Inicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
