@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa_Datos
+namespace CapaEntidad
 {
-    public class Class1
+    internal class Rol
     {
+        public int IdRol { get; set; }
+        public string Descripcion { get; set; }
     }
 }
