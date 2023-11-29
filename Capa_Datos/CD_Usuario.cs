@@ -12,41 +12,51 @@ namespace Capa_Datos
 {
     public class CD_Usuario
     {
-        public List<Usuario> Listar()
+        public List <Usuario>Listar(){
         {
-            List<Usuario> lista = new List<Usuario>();
+                List<Usuario> lista = new List<Usuario>();
 
-            using (SqlConnection oconexion = new SqlConnection(conexion.cadena)) {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
 
-                try {
-                    string query = "select IdUsuario,NombreCompleto,Correo,Clave,Estado from USUARIO";
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    cmd.CommandType = CommandType.Text;
+                    try
+                    {
+                        string query = "select IdUsuario,NombreCompleto,Correo,Clave,Estado from USUARIO";
+                        SqlCommand cmd = new SqlCommand(query, oconexion);
+                        cmd.CommandType = CommandType.Text;
 
-                    oconexion.Open();
+                        oconexion.Open();
 
-                    using (SqlDataReader dr = cmd.ExecuteReader()) { 
-                    while (dr.Read())
+                        using (SqlDataReader dr = cmd.ExecuteReader())
                         {
-                            lista.Add(new Usuario()
+                            while (dr.Read())
                             {
-                                IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
-                                NombreCompleto = dr["NombreCompleto"].ToString(),
-                                Correo = dr["Correo"].ToString(),
-                                Clave = dr["Clave"].ToString(),
-                                Estado = Convert.ToBoolean(dr["Estado"])
-                            }); 
+                                lista.Add(new Usuario()
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    Documento = dr["Documento"].ToString(),
+                                    NombreCompleto = dr["NombreCompleto"].ToString(),
+                                    Correo = dr["Correo"].ToString(),
+                                    Clave = dr["Clave"].ToString(),
+                                    Estado = Convert.ToBoolean(dr["Estado"])
+                                });
+                            }
                         }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        lista = new List<Usuario>();
+
                     }
 
-                } 
-                catch(Exception ex)
-                {
-                    lista = new List<Usuario>();
-
                 }
-            
+                return lista;
+
             }
+
         }
+
+
     }
-}
+    }

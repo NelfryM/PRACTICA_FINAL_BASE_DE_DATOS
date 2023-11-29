@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    internal class Proveedor
+    public class Proveedor
     {
         public int IdProveedor { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public bool Estado { get; set; }
+        public string FechaRegisro { get; set;}
     }
 }
