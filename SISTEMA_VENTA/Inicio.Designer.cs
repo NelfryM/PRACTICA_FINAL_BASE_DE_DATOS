@@ -40,6 +40,8 @@
             this.menutitulo = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.Contenedor = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbusuario = new System.Windows.Forms.Label();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             this.Menu.Location = new System.Drawing.Point(0, 59);
             this.Menu.Name = "Menu";
             this.Menu.Padding = new System.Windows.Forms.Padding(6, 4, 0, 4);
-            this.Menu.Size = new System.Drawing.Size(576, 77);
+            this.Menu.Size = new System.Drawing.Size(950, 77);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "menuStrip1";
             // 
@@ -168,7 +170,7 @@
             this.menutitulo.Name = "menutitulo";
             this.menutitulo.Padding = new System.Windows.Forms.Padding(6, 4, 0, 4);
             this.menutitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menutitulo.Size = new System.Drawing.Size(576, 59);
+            this.menutitulo.Size = new System.Drawing.Size(950, 59);
             this.menutitulo.TabIndex = 1;
             this.menutitulo.Text = "menuStrip2";
             // 
@@ -190,8 +192,30 @@
             this.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Contenedor.Location = new System.Drawing.Point(0, 136);
             this.Contenedor.Name = "Contenedor";
-            this.Contenedor.Size = new System.Drawing.Size(576, 245);
+            this.Contenedor.Size = new System.Drawing.Size(950, 336);
             this.Contenedor.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(777, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 14);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Usuario";
+            // 
+            // lbusuario
+            // 
+            this.lbusuario.AutoSize = true;
+            this.lbusuario.BackColor = System.Drawing.Color.MidnightBlue;
+            this.lbusuario.ForeColor = System.Drawing.Color.White;
+            this.lbusuario.Location = new System.Drawing.Point(859, 34);
+            this.lbusuario.Name = "lbusuario";
+            this.lbusuario.Size = new System.Drawing.Size(51, 14);
+            this.lbusuario.TabIndex = 5;
+            this.lbusuario.Text = "Usuario";
             // 
             // Inicio
             // 
@@ -199,7 +223,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(576, 381);
+            this.ClientSize = new System.Drawing.Size(950, 472);
+            this.Controls.Add(this.lbusuario);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Contenedor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Menu);
@@ -210,6 +236,7 @@
             this.Name = "Inicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -231,6 +258,8 @@
         private FontAwesome.Sharp.IconMenuItem menuProveedores;
         private FontAwesome.Sharp.IconMenuItem menuReportes;
         private System.Windows.Forms.Panel Contenedor;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbusuario;
     }
 }
 

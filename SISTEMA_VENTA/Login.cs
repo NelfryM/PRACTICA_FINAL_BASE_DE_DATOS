@@ -27,23 +27,35 @@ namespace SISTEMA_VENTA
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Usuario ousuario= new CN_Usuario().Listar().Where(u => u.IdUsuario == txtusuario.Text = "";.Text && u.Clave = txtclave.Text).FirstOrDefault();
+            Usuario ousuario= new CN_Usuario().Listar().Where(u => u.Documento == txtDocumento.Text && u.Clave == txtclave.Text).FirstOrDefault();
 
-            Inicio form = new Inicio();
-            form.Show();
-            this.Hide();
+            if (ousuario != null)
+            {
+                Inicio form = new Inicio(ousuario);
+                form.Show();
+                this.Hide();
 
-            form.FormClosing += Frm_closing;
+                form.FormClosing += Frm_closing;
+            } else
+            {
+                MessageBox.Show("Usuario no encontrado");
+            }
+ 
         }
 
         private void Frm_closing(object sender, FormClosingEventArgs e)
         {
-            txtusuario.Text = "";
+            txtDocumento.Text = "";
             txtclave.Text = "";
             this.Show();
         }
 
         private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDocumento_TextChanged(object sender, EventArgs e)
         {
 
         }
