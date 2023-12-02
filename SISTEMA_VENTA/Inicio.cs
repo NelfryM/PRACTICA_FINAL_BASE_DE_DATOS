@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Capa_Negocio;
 using CapaEntidad;
+using Capa_Negocio;
 using FontAwesome.Sharp;
 
 namespace SISTEMA_VENTA
@@ -21,6 +22,7 @@ namespace SISTEMA_VENTA
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
         public Inicio(Usuario objusuario)
+
         {
             InitializeComponent();
             usuarioActual = objusuario; 
