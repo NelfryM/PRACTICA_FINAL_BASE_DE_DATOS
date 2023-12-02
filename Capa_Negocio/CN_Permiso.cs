@@ -14,7 +14,7 @@ namespace Capa_Negocio
 
         public List<Permiso> Listar(int idUsuario)
         {
-            return 
+            return objed_permiso.Listar(idUsuario);
         }
     }
 }

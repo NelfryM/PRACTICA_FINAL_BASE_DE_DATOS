@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Capa_Negocio;
 using CapaEntidad;
 using FontAwesome.Sharp;
 
@@ -27,6 +28,18 @@ namespace SISTEMA_VENTA
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.IdUsuario);
+            foreach (IconMenuItem iconMenu in Menu.Items) {
+
+                bool encontrado = ListaPermisos.Any(m => m.NombreMenu == iconMenu.Name);
+
+                if (encontrado = false) {
+                    iconMenu.Visible = false;
+                }
+            
+            }
+            
+            
             lbusuario.Text = usuarioActual.NombreCompleto;
         }
 
