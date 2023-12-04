@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Capa_Datos
 {
-    public class CD_Permiso
+    public class CD_Rol
     {
-        public List<Permiso> Listar(int idUsuario)
+        public List<Rol> Listar()
         {
             {
-                List<Permiso> lista = new List<Permiso>();
+                List<Rol> lista = new List<Rol>();
 
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
@@ -23,14 +23,9 @@ namespace Capa_Datos
                     try
                     {
                         StringBuilder query = new StringBuilder();
-                        query.AppendLine("select p.IdRol, p.NombreMenu from PERMISO p");
-                        query.AppendLine("inner join ROL r on r.IdRol = p.IdRol");
-                        query.AppendLine("inner join USUARIO u on u.IdRol = r.IdRol");
-                        query.AppendLine("where u.IdUsuario = @idusuario");
-
+                        query.AppendLine("select IdRol, Descripcion from ROL");
 
                         SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
-                        cmd.Parameters.AddWithValue("@idusuario", idUsuario);
                         cmd.CommandType = CommandType.Text;
 
                         oconexion.Open();
@@ -39,25 +34,21 @@ namespace Capa_Datos
                         {
                             while (dr.Read())
                             {
-                                lista.Add(new Permiso()
+                                lista.Add(new Rol()
                                 {
-                                    oRol = new Rol() { IdRol = Convert.ToInt32(dr["IdRol"]) },
-                                    NombreMenu = dr["NombreMenu"].ToString(),
-
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
+                                    Descripcion = dr["Descripcion"].ToString(),
                                 });
                             }
                         }
-
                     }
                     catch (Exception ex)
                     {
-                        lista = new List<Permiso>();
-
+                        lista = new List<Rol>();
                     }
 
                 }
                 return lista;
-
             }
 
         }

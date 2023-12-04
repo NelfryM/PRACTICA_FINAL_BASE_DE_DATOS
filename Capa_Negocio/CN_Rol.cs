@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Capa_Negocio
 {
-    public class CN_Permiso
+    public class CN_Rol
     {
-        private CD_Permiso objed_permiso = new CD_Permiso();
+        private CD_Rol objed_permiso = new CD_Rol();
 
-        public List<Permiso> Listar(int idUsuario)
+        public List<Rol> Listar()
         {
-            return objed_permiso.Listar(idUsuario);
+            return objed_permiso.Listar();
         }
     }
 }

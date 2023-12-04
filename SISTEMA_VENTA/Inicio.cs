@@ -21,9 +21,15 @@ namespace SISTEMA_VENTA
         public static Usuario usuarioActual;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
-        public Inicio(Usuario objusuario)
+        public Inicio(Usuario objusuario = null)
 
         {
+            if(objusuario == null) usuarioActual = new Usuario() { NombreCompleto = "ADMIN PREDEFINIDO", IdUsuario = 1};
+            else
+                usuarioActual = objusuario;
+
+
+
             InitializeComponent();
             usuarioActual = objusuario; 
         }
@@ -32,16 +38,12 @@ namespace SISTEMA_VENTA
         {
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.IdUsuario);
             foreach (IconMenuItem iconMenu in Menu.Items) {
-
                 bool encontrado = ListaPermisos.Any(m => m.NombreMenu == iconMenu.Name);
 
-                if (encontrado = false) {
+                if (encontrado == false) {
                     iconMenu.Visible = false;
                 }
-            
             }
-            
-            
             lbusuario.Text = usuarioActual.NombreCompleto;
         }
 
