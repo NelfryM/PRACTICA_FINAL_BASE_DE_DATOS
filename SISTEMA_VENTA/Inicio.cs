@@ -28,8 +28,6 @@ namespace SISTEMA_VENTA
             else
                 usuarioActual = objusuario;
 
-
-
             InitializeComponent();
             usuarioActual = objusuario; 
         }
