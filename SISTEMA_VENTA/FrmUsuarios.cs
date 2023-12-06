@@ -129,7 +129,7 @@ namespace SISTEMA_VENTA
             txtid.Text = "0";
             txtDocumento.Text = "";
             txtNombrecompleto.Text = "";
-            lable.Text = "";
+            txtCorreo.Text = "";
             txtclave.Text = "";
             txtconfirmclave.Text = "";
             cboRol.SelectedIndex = 0;
@@ -246,6 +246,11 @@ namespace SISTEMA_VENTA
             {
                 row.Visible = true;
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }
