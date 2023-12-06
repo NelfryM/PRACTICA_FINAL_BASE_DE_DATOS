@@ -64,14 +64,63 @@ namespace SISTEMA_VENTA
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            dgvdata.Rows.Add(new object[] {"",txtid.Text, txtDocumento.Text,txtNombrecompleto.Text, lable.Text,txtclave.Text,
-            ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
-            ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
-            ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
-            ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString()
-            });
 
-            Limpiar();
+            string mensaje = string.Empty;
+
+            Usuario objusuario = new Usuario()
+            {
+                IdUsuario = Convert.ToInt32(txtid.Text),
+                Documento = txtDocumento.Text,
+                NombreCompleto = txtNombrecompleto.Text,
+                Correo = txtCorreo.Text,
+                Clave = txtclave.Text,
+                oRol = new Rol() { IdRol = Convert.ToInt32(((OpcionCombo)cboRol.SelectedItem).Valor) },
+                Estado = Convert.ToInt32(((OpcionCombo)cboEstado.SelectedItem).Valor) == 1 ? true : false
+            };
+
+            if (objusuario.IdUsuario == 0)
+            {
+                int idusuariogenerado = new CN_Usuario().Registrar(objusuario, out mensaje);
+
+                if (idusuariogenerado != 0)
+                {
+                    dgvdata.Rows.Add(new object[] {"",txtid.Text, txtDocumento.Text,txtNombrecompleto.Text, txtCorreo.Text,txtclave.Text,
+                ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
+                ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
+                ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
+                ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString()
+                });
+
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje);
+                }
+
+            }
+            else {
+                bool resultado = new CN_Usuario().Editar(objusuario, out mensaje);
+
+                if (resultado)
+                {
+                    DataGridViewRow row = dgvdata.Rows[Convert.ToInt32(txtindice.Text)];
+                    row.Cells["Id"].Value = txtid.Text;
+                    row.Cells["Documento"].Value = txtDocumento.Text;
+                    row.Cells["NombreCompleto"].Value = txtNombrecompleto.Text;
+                    row.Cells["Correo"].Value = txtCorreo.Text;
+                    row.Cells["Clave"].Value = txtclave.Text;
+                    row.Cells["IdRol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
+                    row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Texto.ToString();
+                    row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString();
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje);
+                }
+            }
         }
 
         private void Limpiar()
@@ -85,6 +134,7 @@ namespace SISTEMA_VENTA
             txtconfirmclave.Text = "";
             cboRol.SelectedIndex = 0;
             cboEstado.SelectedIndex = 0;
+            txtDocumento.Select();
         }
         
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -145,6 +195,32 @@ namespace SISTEMA_VENTA
 
             }
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtid.Text) != 0)
+            {
+                if(MessageBox.Show("¿Desea eliminar el usuario","Mensaje",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string mensaje = string.Empty;
+
+                    Usuario objusuario = new Usuario()
+                    {
+                        IdUsuario = Convert.ToInt32(txtid.Text)
+                    };
+                    bool respuesta = new CN_Usuario().Eliminar(objusuario, out mensaje);
+
+                    if (respuesta)
+                    {
+                        dgvdata.Rows.RemoveAt(Convert.ToInt32(txtindice.Text));
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje,"Mensaje",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
         }
     }
 }
