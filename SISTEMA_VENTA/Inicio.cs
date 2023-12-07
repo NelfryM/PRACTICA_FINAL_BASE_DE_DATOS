@@ -85,7 +85,7 @@ namespace SISTEMA_VENTA
 
         private void Submenuregistrarventa_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuVentas, new FrmVentas());
+            Abrirformulario(menuVentas, new FrmVentas(usuarioActual));
 
         }
 
@@ -97,13 +97,13 @@ namespace SISTEMA_VENTA
 
         private void submenuregistrarcompra_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuCompras, new FrmCompras());
+            Abrirformulario(menuCompras, new FrmCompras(usuarioActual));
 
         }
 
         private void submenuverdetallecompra_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuVentas, new frmDetalleCompra());
+            Abrirformulario(menuCompras, new frmDetalleCompra());
 
         }
 

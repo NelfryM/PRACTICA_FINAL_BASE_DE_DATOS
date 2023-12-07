@@ -63,10 +63,86 @@ namespace SISTEMA_VENTA.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Basura {
+            get {
+                object obj = ResourceManager.GetObject("Basura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chcekmark {
             get {
                 object obj = ResourceManager.GetObject("Chcekmark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;!--sistema creado por el canal yt codigo estudiante--&gt;
+        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid b [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaCompra {
+            get {
+                return ResourceManager.GetString("PlantillaCompra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] PlantillaProducto {
+            get {
+                object obj = ResourceManager.GetObject("PlantillaProducto", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;!--sistema creado por el canal yt codigo estudiante--&gt;
+        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid b [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaVenta {
+            get {
+                return ResourceManager.GetString("PlantillaVenta", resourceCulture);
             }
         }
     }
