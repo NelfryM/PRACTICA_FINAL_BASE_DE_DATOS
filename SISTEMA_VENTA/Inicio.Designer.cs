@@ -62,8 +62,8 @@
             this.menuCompras,
             this.menuClientes,
             this.menuProveedores,
-            this.menuReportes,
-            this.menuAcerca_de});
+            this.menuAcerca_de,
+            this.menuReportes});
             this.Menu.Location = new System.Drawing.Point(0, 59);
             this.Menu.Name = "Menu";
             this.Menu.Padding = new System.Windows.Forms.Padding(6, 4, 0, 4);
@@ -226,6 +226,7 @@
             this.menuReportes.Size = new System.Drawing.Size(65, 64);
             this.menuReportes.Text = "Reportes";
             this.menuReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.menuReportes.Visible = false;
             this.menuReportes.Click += new System.EventHandler(this.menuReportes_Click);
             // 
             // menuAcerca_de
