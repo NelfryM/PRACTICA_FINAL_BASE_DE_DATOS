@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Capa_Negocio;
 using CapaEntidad;
+using Capa_Negocio;
 using FontAwesome.Sharp;
 
 namespace SISTEMA_VENTA
@@ -20,8 +21,13 @@ namespace SISTEMA_VENTA
         public static Usuario usuarioActual;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
-        public Inicio(Usuario objusuario)
+        public Inicio(Usuario objusuario = null)
+
         {
+            if(objusuario == null) usuarioActual = new Usuario() { NombreCompleto = "ADMIN PREDEFINIDO", IdUsuario = 1};
+            else
+                usuarioActual = objusuario;
+
             InitializeComponent();
             usuarioActual = objusuario; 
         }
@@ -30,16 +36,12 @@ namespace SISTEMA_VENTA
         {
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.IdUsuario);
             foreach (IconMenuItem iconMenu in Menu.Items) {
-
                 bool encontrado = ListaPermisos.Any(m => m.NombreMenu == iconMenu.Name);
 
-                if (encontrado = false) {
+                if (encontrado == false) {
                     iconMenu.Visible = false;
                 }
-            
             }
-            
-            
             lbusuario.Text = usuarioActual.NombreCompleto;
         }
 
@@ -83,7 +85,7 @@ namespace SISTEMA_VENTA
 
         private void Submenuregistrarventa_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuVentas, new FrmVentas());
+            Abrirformulario(menuVentas, new FrmVentas(usuarioActual));
 
         }
 
@@ -95,13 +97,13 @@ namespace SISTEMA_VENTA
 
         private void submenuregistrarcompra_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuCompras, new FrmCompras());
+            Abrirformulario(menuCompras, new FrmCompras(usuarioActual));
 
         }
 
         private void submenuverdetallecompra_Click(object sender, EventArgs e)
         {
-            Abrirformulario(menuVentas, new frmDetalleCompra());
+            Abrirformulario(menuCompras, new frmDetalleCompra());
 
         }
 

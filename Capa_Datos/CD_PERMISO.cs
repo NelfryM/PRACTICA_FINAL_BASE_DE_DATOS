@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Capa_Datos
 {
-    public class CD_PERMISO
+    public class CD_Permiso
     {
         public List<Permiso> Listar(int idUsuario)
         {

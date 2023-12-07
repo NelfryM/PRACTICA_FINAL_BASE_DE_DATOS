@@ -10,7 +10,7 @@ namespace Capa_Negocio
 {
     public class CN_Permiso
     {
-        private CD_PERMISO objed_permiso = new CD_PERMISO();
+        private CD_Permiso objed_permiso = new CD_Permiso();
 
         public List<Permiso> Listar(int idUsuario)
         {
